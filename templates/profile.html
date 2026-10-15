@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Profile</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="navbar">
+    AI Energy Audit
+    <span class="nav-right">
+        <a href="/dashboard">Dashboard</a>
+        <a href="/logout">Logout</a>
+    </span>
+</div>
+
+<div class="container">
+    <h2>User Profile</h2>
+
+    <p style="font-size:18px;"><b>Username:</b> {{ username }}</p>
+
+    <button onclick="window.location.href='/dashboard'">Back to Dashboard</button>
+</div>
+
+</body>
+</html>

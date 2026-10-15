@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="/static/style.css">
+
+    <!-- Extra Page-Specific CSS -->
+    <style>
+
+        /* Center wrapper */
+        .page-wrapper {
+            width: 100%;
+            height: calc(100vh - 70px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 70px; /* for navbar */
+        }
+
+        /* Fix stretched input issue */
+        .container input,
+        .password-wrapper,
+        .password-wrapper input {
+            width: 100% !important;
+            max-width: 100% !important;
+            box-sizing: border-box;
+        }
+
+        /* Alert animation */
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(-5px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Error popup INSIDE card */
+        .alert-box-inside {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+
+            background: #ffe6e6;
+            border-left: 6px solid #ff3b3b;
+            color: #b10000;
+
+            font-size: 14.5px;
+            font-weight: 500;
+
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+
+            animation: fadeSlide 0.4s ease;
+            text-align: center;
+        }
+
+        /* Password visibility toggle */
+        .password-wrapper {
+            position: relative;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            font-size: 15px;
+            color: #0b5394;
+            user-select: none;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">AI Energy Audit</div>
+
+
+<!-- CENTERED PAGE WRAPPER -->
+<div class="page-wrapper">
+
+    <div class="container">
+
+        <h2>Login</h2>
+
+        <!-- Error Popup Inside Card -->
+        {% if error %}
+        <div class="alert-box-inside" id="alertBox">
+            {{ error }}
+        </div>
+        {% endif %}
+
+        <!-- FORM -->
+        <form method="POST">
+
+            <input name="username" placeholder="Username" required>
+
+            <div class="password-wrapper">
+                <input type="password" id="passwordField" name="password" placeholder="Password" required>
+                <span class="toggle-password" onclick="togglePassword()">👁️</span>
+            </div>
+
+            <button type="submit">Login</button>
+
+            <p style="text-align:center; margin-top:18px;">
+                Don’t have an account?
+                <a href="/signup">Create one</a>
+            </p>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- JS FUNCTIONALITY -->
+<script>
+
+    // Show/Hide password
+    function togglePassword() {
+        var field = document.getElementById("passwordField");
+        field.type = (field.type === "password") ? "text" : "password";
+    }
+
+    // Auto-hide alert popup
+    const alertBox = document.getElementById("alertBox");
+    if (alertBox) {
+        setTimeout(() => {
+            alertBox.style.transition = "0.5s ease";
+            alertBox.style.opacity = "0";
+            alertBox.style.transform = "translateY(-5px)";
+            setTimeout(() => alertBox.remove(), 600);
+        }, 3000);
+    }
+
+</script>
+
+</body>
+</html>

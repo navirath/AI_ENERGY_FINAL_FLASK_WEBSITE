@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Energy Audit</title>
+    <link rel="stylesheet" href="/static/style.css">
+
+    <style>
+    /* ====== GLOBAL FIX: Stop horizontal scrolling anywhere ====== */
+    html, body {
+        margin: 0;
+        padding: 0;
+        max-width: 100%;
+        overflow-x: hidden !important;
+    }
+
+    /* ====== FIXED NAVBAR ====== */
+    .navbar {
+        width: 100%;
+        height: 70px;
+        background: linear-gradient(90deg, #0b5394, #1a73e8);
+        padding: 0 25px;
+        color: white;
+        font-size: 24px;
+        font-weight: 600;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 99999;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+        box-sizing: border-box;
+
+        overflow: hidden;   /* Prevent navbar from stretching */
+    }
+
+    .nav-title {
+        flex-shrink: 0;
+    }
+
+    /* ====== FIX: Right buttons stay inside screen ====== */
+    .nav-right {
+        display: flex;
+        gap: 18px;
+        align-items: center;
+
+        white-space: nowrap;
+        flex-shrink: 0;
+
+        max-width: 40%;
+        justify-content: flex-end;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .nav-right a {
+        color: white;
+        font-size: 16px;
+        text-decoration: none;
+        font-weight: 500;
+        padding: 5px 8px;
+    }
+
+    .nav-right a:hover {
+        text-decoration: underline;
+    }
+
+    /* ====== PAGE CONTENT ====== */
+    .page-content {
+        padding-top: 110px;
+        box-sizing: border-box;
+        width: 100%;
+        overflow-x: hidden;
+    }
+
+    /* ====== STREAMLIT FRAME WRAPPER ====== */
+    .iframe-wrapper {
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
+
+        background: white;
+        padding: 20px;
+        border-radius: 20px;
+
+        box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+        border: 2px solid #e7f0fd;
+
+        box-sizing: border-box;
+        overflow-x: hidden;
+    }
+
+    /* HARD FIX: Prevent iframe from stretching page */
+    iframe {
+        width: 100% !important;
+        max-width: 100% !important;
+
+        height: 1300px;
+        border: none;
+        border-radius: 12px;
+
+        display: block;
+        overflow-x: hidden !important;
+    }
+
+</style>
+
+
+</head>
+
+<body>
+
+<div class="navbar">
+    AI Energy Audit
+    <span class="nav-right">
+        <a href="/profile">Profile</a>
+        <a href="/logout">Logout</a>
+    </span>
+</div>
+
+<div class="page-content">
+
+    <h2 style="text-align:center; color:#0b5394; margin-bottom:20px;">
+        AI Energy Audit Dashboard
+    </h2>
+
+    <div class="iframe-wrapper">
+        <iframe src="http://localhost:8501"></iframe>
+    </div>
+
+</div>
+
+</body>
+</html>
